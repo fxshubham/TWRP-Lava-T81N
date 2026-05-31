@@ -66,6 +66,12 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_HAS_MTP := true
 TW_MTP_DEVICE := /dev/mtp_usb
 
+# Use our own configfs USB gadget (recovery/root/init.recovery.usb.rc) instead of
+# TWRP's default init.recovery.usb.rc, which drives the legacy android_usb
+# (/sys/class/android_usb/android0) interface that does not exist on this
+# configfs-only kernel.
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+
 # Microtrust TEE - keymaster4
 TW_INCLUDE_CRYPTO := true
 TW_CRYPTO_FS_TYPE := "ext4"

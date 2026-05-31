@@ -26,4 +26,4 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/recovery/root/init.recovery.vold_decrypt.keymaster.rc:recovery/root/init.recovery.vold_decrypt.keymaster.rc \
     $(DEVICE_PATH)/recovery/root/init.recovery.vold_decrypt.keymaster_attestation.rc:recovery/root/init.recovery.vold_decrypt.keymaster_attestation.rc \
     $(DEVICE_PATH)/recovery/root/system/etc/twrp.fstab:recovery/root/system/etc/twrp.fstab \
-    $(DEVICE_PATH)/recovery/root/init.mtp.sh:recovery/root/init.mtp.sh \
+    $(DEVICE_PATH)/recovery/root/init.recovery.usb.rc:recovery/root/init.recovery.usb.rc \
