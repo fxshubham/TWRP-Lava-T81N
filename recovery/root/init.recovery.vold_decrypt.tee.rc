@@ -1,0 +1,11 @@
+service thh-2-0 /vendor/bin/hw/vendor.microtrust.hardware.thh@2.0-service
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service capi-2-0 /vendor/bin/hw/vendor.microtrust.hardware.capi@2.0-service
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0

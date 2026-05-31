@@ -1,0 +1,42 @@
+import init.recovery.vold_decrypt.tee.rc
+import init.recovery.vold_decrypt.mobicore.rc
+import init.recovery.vold_decrypt.gatekeeper.rc
+import init.recovery.vold_decrypt.keymaster_attestation.rc
+import init.recovery.vold_decrypt.keymaster.rc
+
+on fs
+    install_keyring
+    mkdir /mnt/vendor/persist 0777 system system
+    setprop crypto.ready 1
+
+service keystore /system/bin/keystore /tmp/misc/keystore
+    user root
+    group keystore drmrpc readproc log
+    disabled
+    seclabel u:r:recovery:s0
+
+service keystore_auth /system/bin/keystore_auth
+    oneshot
+    user system
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+on property:hwservicemanager.ready=true
+    start mobicore
+    exec u:r:recovery:s0 root root -- /system/bin/sleep 3
+    start thh-2-0
+    exec u:r:recovery:s0 root root -- /system/bin/sleep 2
+    start capi-2-0
+    exec u:r:recovery:s0 root root -- /system/bin/sleep 2
+    start keymaster-4-0
+    start gatekeeper-1-0
+    start keymaster_attestation-1-1
+
+on property:twrp.decrypt.done=true
+    stop keymaster_attestation-1-1
+    stop keymaster-4-0
+    stop gatekeeper-1-0
+    stop capi-2-0
+    stop thh-2-0
+    stop mobicore

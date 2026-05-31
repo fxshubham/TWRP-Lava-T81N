@@ -1,0 +1,5 @@
+service mobicore /vendor/bin/teei_daemon -r
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0

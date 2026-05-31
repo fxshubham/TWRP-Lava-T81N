@@ -1,0 +1,49 @@
+on early-init
+    mkdir /etc 0755 root root
+    mount configfs none /sys/kernel/config
+    mkdir /sys/kernel/config/usb_gadget/g1/functions/mtp.gs0
+
+on init
+    write /etc/recovery.fstab "/dev/block/mmcblk0p3 /misc emmc defaults defaults"
+    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
+    symlink /system/lib64/hw/libMcGatekeeper.so /system/lib64/hw/gatekeeper.mt6761.so
+    symlink /system/lib64/hw/libMcTeeKeymaster.so /system/lib64/hw/keystore.mt6761.so
+    symlink /system/lib64/hw/kmsetkey.default.so /system/lib64/hw/kmsetkey.trustonic.so
+    setprop sys.usb.configfs 1
+    setprop sys.usb.controller musb-hdrc
+
+on fs
+    setprop sys.usb.ffs.aio_compat 1
+    export ANDROID_ROOT /system_root
+    write /sys/devices/platform/mt_usb/cmode 2
+
+on post-fs-data
+    symlink /dev/block/mmcblk0boot0 /dev/block/platform/bootdevice/by-name/preloader_a
+    symlink /dev/block/mmcblk0boot1 /dev/block/platform/bootdevice/by-name/preloader_b
+    symlink /dev/block/mmcblk0boot0 /dev/block/by-name/preloader_a
+    symlink /dev/block/mmcblk0boot1 /dev/block/by-name/preloader_b
+
+on property:ro.debuggable=1
+    write /sys/devices/platform/mt_usb/cmode 1
+
+on property:sys.usb.ffs.ready=1
+    mkdir /sys/kernel/config/usb_gadget/g1/functions/mtp.gs0
+    write /sys/kernel/config/usb_gadget/g1/functions/mtp.gs0/os_desc/interface.MTP/compatible_id "MTP"
+    write /sys/kernel/config/usb_gadget/g1/os_desc/b_vendor_code 0x1
+    write /sys/kernel/config/usb_gadget/g1/os_desc/qw_sign "MSFT100"
+    write /sys/kernel/config/usb_gadget/g1/os_desc/use 1
+    symlink /sys/kernel/config/usb_gadget/g1/configs/b.1 /sys/kernel/config/usb_gadget/g1/os_desc/b.1
+    write /sys/kernel/config/usb_gadget/g1/idVendor 0x0e8d
+    write /sys/kernel/config/usb_gadget/g1/idProduct 0x201d
+    rm /sys/kernel/config/usb_gadget/g1/configs/b.1/ffs.adb
+    rm /sys/kernel/config/usb_gadget/g1/configs/b.1/f1
+    symlink /sys/kernel/config/usb_gadget/g1/functions/mtp.gs0 /sys/kernel/config/usb_gadget/g1/configs/b.1/f1
+    symlink /sys/kernel/config/usb_gadget/g1/functions/ffs.adb /sys/kernel/config/usb_gadget/g1/configs/b.1/ffs.adb
+    start mtp_bind
+
+service mtp_bind /system/bin/sh /init.mtp.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0

@@ -1,0 +1,8 @@
+[
+  {
+    "repository": "mediatek_mt6761-common-TWRP",
+    "remote": "https://github.com/kelexine",
+    "branch": "android-11-arm64",
+    "target_path": "device/mediatek/mt6761-common"
+  }
+]
