@@ -1,11 +1,2 @@
-# mount point       fstype    device                                                          flags
-/boot               emmc      /dev/block/bootdevice/by-name/boot                              flags=display="Boot";backup=1
-/recovery           emmc      /dev/block/bootdevice/by-name/recovery                          flags=display="Recovery";backup=1
-/system_root        ext4      /dev/block/mapper/system                                        flags=display="System"
-/vendor             ext4      /dev/block/mapper/vendor                                        flags=display="Vendor"
-/data               ext4      /dev/block/bootdevice/by-name/userdata                          flags=display="Data";userdata=1
-/cache              ext4      /dev/block/bootdevice/by-name/cache                             flags=display="Cache"
-/metadata           ext4      /dev/block/bootdevice/by-name/md_udc                            flags=display="Metadata";backup=1
-/persist            ext4      /dev/block/bootdevice/by-name/protect1                          flags=display="Persist"
-/lava               emmc      /dev/block/bootdevice/by-name/lava                              flags=display="Lava";backup=1
-/external_sd        vfat      /dev/block/mmcblk1p1                                            flags=display="MicroSD";storage;wipeingui;removable
+/dev/block/mmcblk0p3 /misc emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/userdata /data ext4 noatime,nosuid,nodev,noauto_da_alloc,errors=panic,inlinecrypt latemount,wait,check,quota,reservedsize=128M,formattable,fileencryption=aes-256-xts:aes-256-cts:v1

@@ -1,5 +1,6 @@
-service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
+service gatekeeper-1-0 /system/bin/hw/android.hardware.gatekeeper@1.0-service
     user root
-    group root
+    group root system drmrpc
     disabled
+    setenv LD_LIBRARY_PATH /system/lib64
     seclabel u:r:recovery:s0

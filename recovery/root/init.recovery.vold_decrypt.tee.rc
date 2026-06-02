@@ -1,11 +1,14 @@
-service thh-2-0 /vendor/bin/hw/vendor.microtrust.hardware.thh@2.0-service
+service capi-2-0 /system/bin/hw/vendor.microtrust.hardware.capi@2.0-service
     user root
-    group root
+    group root system drmrpc
     disabled
+    oneshot
+    setenv LD_LIBRARY_PATH /system/lib64
     seclabel u:r:recovery:s0
 
-service capi-2-0 /vendor/bin/hw/vendor.microtrust.hardware.capi@2.0-service
+service thh-2-0 /system/bin/hw/vendor.microtrust.hardware.thh@2.0-service
     user root
-    group root
+    group root system drmrpc
     disabled
+    setenv LD_LIBRARY_PATH /system/lib64
     seclabel u:r:recovery:s0
