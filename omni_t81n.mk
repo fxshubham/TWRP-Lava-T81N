@@ -26,11 +26,6 @@ PRODUCT_SHIPPING_API_LEVEL := 29
 # used before the readonly/obsolete protection activates.
 PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := false
 
-# This device is A-only — override common tree's AB_OTA_UPDATER so TWRP uses
-# bare partition names ("system") rather than slotted names ("system_a") when
-# calling fs_mgr_update_logical_partition() for dynamic partition setup.
-AB_OTA_UPDATER := false
-
 # Override common tree recovery root files with device-specific versions
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/recovery/root/init.recovery.mt6761.rc:recovery/root/init.recovery.mt6761.rc \

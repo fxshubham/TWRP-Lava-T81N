@@ -81,6 +81,17 @@ TW_CRYPTO_FS_OPTIONS := "noatime,nosuid,nodev,noauto_da_alloc,errors=panic,inlin
 TW_NO_SLOT_SWITCH := true
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
 
+# This device ships A-only firmware. Override common tree's AB_OTA_UPDATER := true
+# (set in device/mediatek/mt6761-common/common.mk, a product makefile). Plain Make
+# variables set in product makefiles are evaluated via import-products (envsetup.mk:266)
+# which runs BEFORE board_config.mk (envsetup.mk:277). So BoardConfig.mk is the correct
+# place to override non-PRODUCT_* variables like this — our value runs last and wins.
+# AB_OTA_PARTITIONS and AB_OTA_POSTINSTALL_CONFIG must also be cleared; build/make/core/
+# Makefile:4530 errors if AB_OTA_PARTITIONS is non-empty but AB_OTA_UPDATER != true.
+AB_OTA_UPDATER := false
+AB_OTA_PARTITIONS :=
+AB_OTA_POSTINSTALL_CONFIG :=
+
 # Dynamic Partitions
 BOARD_SUPER_PARTITION_SIZE := 4294967296
 BOARD_SUPER_PARTITION_GROUPS := main
