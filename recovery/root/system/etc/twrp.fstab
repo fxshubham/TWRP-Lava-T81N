@@ -1,6 +1,6 @@
 # mount point       fstype    device                                                          flags
-/system_root        ext4      /dev/block/mapper/system                                        flags=display="System";backup=1;flashimg=0;wipeingui
-/vendor             ext4      /dev/block/mapper/vendor                                        flags=display="Vendor";backup=1;flashimg=0;wipeingui
+/system_root        ext4      /dev/block/mapper/system                                        flags=display="System";backup=1;flashimg=0;wipeingui;logical;fsflags=ro
+/vendor             ext4      /dev/block/mapper/vendor                                        flags=display="Vendor";backup=1;flashimg=0;wipeingui;logical;fsflags=ro
 /data               ext4      /dev/block/bootdevice/by-name/userdata                          flags=display="Data";backup=1;wipeingui;fileencryption=aes-256-xts:aes-256-cts
 /cache              ext4      /dev/block/bootdevice/by-name/cache                             flags=display="Cache";backup=1;wipeingui
 /metadata           ext4      /dev/block/bootdevice/by-name/md_udc                            flags=display="Metadata";backup=1
