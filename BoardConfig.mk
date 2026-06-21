@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2022 TeamWin Recovery Project
+# Copyright (C) 2026 Shubham Srivastava (https://github.com/fxshubham)
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -30,6 +31,7 @@ TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 
 # TWRP
+TW_DEVICE_MAINTAINER := "Shubham Srivastava"
 TW_THEME := portrait_mdpi
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"

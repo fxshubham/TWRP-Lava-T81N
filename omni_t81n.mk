@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2022 TeamWin Recovery Project
+# Copyright (C) 2026 Shubham Srivastava (https://github.com/fxshubham)
 #
 # SPDX-License-Identifier: Apache-2.0
 #
