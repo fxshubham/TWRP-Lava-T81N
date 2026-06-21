@@ -1,5 +1,7 @@
 # TWRP Device Tree for Lava T81N
 
+⚠️ WARNING: Two variants of T81N exist — MT6761 (MediaTek) and T310 (UNISOC). This is for MT6761 ONLY. Flashing on the UNISOC variant will brick it. Verify via Settings → About Tablet before flashing.
+
 Maintained by: **Shubham Srivastava** ([@fxshubham](https://github.com/fxshubham))
 
 For bugs or questions, open a [GitHub Issue](https://github.com/fxshubham/TWRP-Lava-T81N/issues).
