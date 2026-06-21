@@ -145,7 +145,7 @@ tree. Anyone building a custom kernel for this device must include these in
 ## Credits
 
 - [TeamWin Recovery Project (TWRP)](https://twrp.me)
-- [MT6761 common device tree](https://github.com/twrp-mtk-common/device_mediatek_mt6761-common)
+- [MT6761 common device tree](https://github.com/kelexine/mediatek_mt6761-common-TWRP)
 - Microtrust beanpod TEE binaries extracted from stock Lava T81N firmware
 
 ---
