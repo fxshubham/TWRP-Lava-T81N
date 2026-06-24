@@ -27,12 +27,22 @@ For bugs or questions, open a [GitHub Issue](https://github.com/fxshubham/TWRP-L
 
 ## Features Supported
 
-- [x] MTP and ADB — works on first boot (configfs USB gadget)
+- [x] MTP and ADB (configfs USB gadget)
 - [x] FBE decryption — pattern, PIN, password
 - [x] Internal storage (`/data/media/0`)
 - [x] Logical/dynamic partition mounting (system, vendor — read-only)
 - [x] Brightness control
 - [x] Extra languages
+- [x] No known bugs
+
+---
+
+## Screenshots
+
+<img width="800" height="1280" alt="Screenshot_2026-06-24-10-42-14" src="https://github.com/user-attachments/assets/d42b286b-69d0-4b00-a568-e8699042fc54" />
+<img width="800" height="1280" alt="Screenshot_2026-06-24-10-42-26" src="https://github.com/user-attachments/assets/8583b1f5-edd5-48a0-89fd-578497808de3" />
+<img width="800" height="1280" alt="Screenshot_2026-06-24-10-43-07" src="https://github.com/user-attachments/assets/4aaa8c1d-1308-48bf-8ef1-1bfe6ce0b6e1" />
+<img width="800" height="1280" alt="Screenshot_2026-06-24-10-43-16" src="https://github.com/user-attachments/assets/a4a6f372-13be-4b7d-a274-ceccd9cfb222" />
 
 ---
 
